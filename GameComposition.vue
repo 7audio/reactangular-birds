@@ -60,11 +60,12 @@ function useBird() {
   return {
     bird,
     moveBird,
+    resetBird,
     birdPosition
   }
 }
 
-function useTarget(bird) {
+function useTarget(bird, winCallback) {
   const target = { x: 1000, y: 263 }
   const targetPosition = computed(() => ({
     left: target.x + 'px',
@@ -72,6 +73,7 @@ function useTarget(bird) {
   }))
   watch(() => {
     if (bird.x >= target.x + 25 && bird.x <= target.x + 152 && bird.y >= target.y - 45 && bird.y <= target.y + 132) {
+      winCallback()
       alert("you win!")
     }
   })
@@ -80,11 +82,11 @@ function useTarget(bird) {
 
 export default {
   setup() {
-    const { bird, moveBird, birdPosition } = useBird()
+    const { bird, moveBird, resetBird, birdPosition } = useBird()
     return {
       birdPosition,
       ...useCatapult(moveBird),
-      ...useTarget(bird)
+      ...useTarget(bird, resetBird)
     }
   }
 }
