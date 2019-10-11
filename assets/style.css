@@ -1,0 +1,27 @@
+body {
+  background-color: #31475e;
+}
+.container {
+  width: 1280px;
+  height: 720px;
+  background: url('./background.png');
+  position: relative;
+}
+.bird {
+  position: absolute;
+  width: 51px;
+  height: 45px;
+  background: url('./reactangular.png');
+  background-size: contain;
+  cursor: grab;
+  transition: all .065s;
+  z-index: 10;
+}
+.target {
+  position: absolute;
+  width: 152px;
+  height: 132px;
+  background: url('./vue.png');
+  background-size: contain;
+  cursor: crosshair;
+}
