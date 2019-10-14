@@ -12,6 +12,32 @@ import { reactive, watch, computed } from '@vue/composition-api'
 
 Vue.use(VueCompositionApi)
 
+function useBird() {
+  const initialBird = () => ({ x: 229, y: 256 })
+  const bird = reactive(initialBird())
+  const moveBird = trajectory => {
+    trajectory.map(({ x, y }, t) => setTimeout(() => {
+      bird.x = x
+      bird.y = y
+    }, t * 65))
+    setTimeout(resetBird, 2000)
+  }
+  const resetBird = () => {
+    bird.x = initialBird().x
+    bird.y = initialBird().y
+  }
+  const birdPosition = computed(() => ({
+    left: bird.x + 'px',
+    bottom: bird.y + 'px'
+  }))
+  return {
+    bird,
+    moveBird,
+    resetBird,
+    birdPosition
+  }
+}
+
 function useCatapult(moveBird) {
   const dragStart = reactive({ x: null, y: null })
   const startDrag = e => {
@@ -36,32 +62,6 @@ function useCatapult(moveBird) {
   return {
     startDrag,
     stopDrag
-  }
-}
-
-function useBird() {
-  const initialBird = () => ({ x: 229, y: 256 })
-  const bird = reactive(initialBird())
-  const moveBird = trajectory => {
-    trajectory.map(({ x, y }, t) => setTimeout(() => {
-      bird.x = x
-      bird.y = y
-    }, t * 65))
-    setTimeout(resetBird, 2000)
-  }
-  const resetBird = () => {
-    bird.x = initialBird().x
-    bird.y = initialBird().y
-  }
-  const birdPosition = computed(() => ({
-    left: bird.x + 'px',
-    bottom: bird.y + 'px'
-  }))
-  return {
-    bird,
-    moveBird,
-    resetBird,
-    birdPosition
   }
 }
 
