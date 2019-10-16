@@ -13,7 +13,7 @@ import { reactive, watch, computed } from '@vue/composition-api'
 Vue.use(VueCompositionApi)
 
 function useBird() {
-  const initialBird = () => ({ x: 229, y: 256 })
+  const initialBird = () => ({ x: 199, y: 256 })
   const bird = reactive(initialBird())
   const moveBird = trajectory => {
     trajectory.map(({ x, y }, t) => setTimeout(() => {
@@ -42,10 +42,10 @@ function useCatapult(moveBird) {
   const dragStart = reactive({ x: null, y: null })
   const startDrag = e => {
     dragStart.x = e.clientX
-    dragStart.y = 720 - e.clientY
+    dragStart.y = 660 - e.clientY
   }
   const stopDrag = e => {
-    moveBird(calculateTrajectory(dragStart.x, dragStart.y, e.clientX, 720 - e.clientY))
+    moveBird(calculateTrajectory(dragStart.x, dragStart.y, e.clientX, 660 - e.clientY))
   }
   const calculateTrajectory = (x1, y1, x2, y2) => {
     let Vx = (x1 - x2)/1.7,
@@ -66,7 +66,7 @@ function useCatapult(moveBird) {
 }
 
 function useTarget(bird, winCallback) {
-  const target = { x: 1000, y: 263 }
+  const target = { x: 970, y: 263 }
   const targetPosition = computed(() => ({
     left: target.x + 'px',
     bottom: target.y + 'px'

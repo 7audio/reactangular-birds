@@ -6,8 +6,8 @@
 </template>
 
 <script>
-const initialBird = () => ({ x: 229, y: 256 })
-const target = { x: 1000, y: 263 }
+const initialBird = () => ({ x: 199, y: 256 })
+const target = { x: 970, y: 263 }
 
 export default {
   data() {
@@ -19,10 +19,10 @@ export default {
   methods: {
     startDrag(e) {
       this.dragStart.x = e.clientX
-      this.dragStart.y = 720 - e.clientY
+      this.dragStart.y = 660 - e.clientY
     },
     stopDrag(e) {
-      this.moveBird(this.calculateTrajectory(this.dragStart.x, this.dragStart.y, e.clientX, 720 - e.clientY))
+      this.moveBird(this.calculateTrajectory(this.dragStart.x, this.dragStart.y, e.clientX, 660 - e.clientY))
     },
     calculateTrajectory(x1, y1, x2, y2) {
       let Vx = (x1 - x2)/1.7,
