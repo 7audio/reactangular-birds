@@ -93,5 +93,5 @@ export default {
 </script>
 
 <style>
-@import './assets/style.css';
+@import '../assets/style.css';
 </style>
