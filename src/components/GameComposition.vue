@@ -22,10 +22,7 @@ function useBird() {
     }, t * 65))
     setTimeout(resetBird, 2000)
   }
-  const resetBird = () => {
-    bird.x = initialBird().x
-    bird.y = initialBird().y
-  }
+  const resetBird = () => Object.assign(bird, initialBird())
   const birdPosition = computed(() => ({
     left: bird.x + 'px',
     bottom: bird.y + 'px'
