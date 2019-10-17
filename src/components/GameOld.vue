@@ -1,7 +1,7 @@
 <template>
   <div class="container" @mouseup="stopDrag">
     <div class="bird" @mousedown="startDrag" :style="birdPosition"/>
-    <div class="target" :style="targetPosition"/>
+    <div class="target" :style="targetPosition" :class="targetClass"/>
   </div>
 </template>
 
@@ -56,17 +56,12 @@ export default {
         left: target.x + 'px',
         bottom: target.y + 'px'
       }
-    }
-  },
-  watch: {
-    bird: {
-      handler (val) {
-        if (val.x >= target.x + 25 && val.x <= target.x + 152 && val.y >= target.y - 45 && val.y <= target.y + 132) {
-          alert("you win!")
-          this.resetBird()
-        }
-      },
-      deep: true
+    },
+    isTargetHit() {
+      return (this.bird.x >= target.x + 25 && this.bird.y >= target.y - 45 && this.bird.y <= target.y + 132)
+    },
+    targetClass() {
+      return this.isTargetHit ? 'target-hit' : ''
     }
   }
 }

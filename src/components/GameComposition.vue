@@ -1,14 +1,14 @@
 <template>
   <div class="container" @mouseup="stopDrag">
     <div class="bird" @mousedown="startDrag" :style="birdPosition"/>
-    <div class="target" :style="targetPosition"/>
+    <div class="target" :style="targetPosition" :class="targetClass"/>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import VueCompositionApi from '@vue/composition-api'
-import { reactive, watch, computed } from '@vue/composition-api'
+import { reactive, computed } from '@vue/composition-api'
 
 Vue.use(VueCompositionApi)
 
@@ -19,8 +19,8 @@ function useBird() {
     trajectory.map(({ x, y }, t) => setTimeout(() => {
       bird.x = x
       bird.y = y
-    }, t * 65))
-    setTimeout(resetBird, 2000)
+    }, t * 90))
+    setTimeout(resetBird, 2800)
   }
   const resetBird = () => Object.assign(bird, initialBird())
   const birdPosition = computed(() => ({
@@ -62,19 +62,15 @@ function useCatapult(moveBird) {
   }
 }
 
-function useTarget(bird, winCallback) {
+function useTarget(bird) {
   const target = { x: 970, y: 263 }
+  const isTargetHit = computed(() => bird.x >= target.x && bird.y >= target.y - 45 && bird.y <= target.y + 132)
   const targetPosition = computed(() => ({
     left: target.x + 'px',
     bottom: target.y + 'px'
   }))
-  watch(() => {
-    if (bird.x >= target.x + 25 && bird.x <= target.x + 152 && bird.y >= target.y - 45 && bird.y <= target.y + 132) {
-      winCallback()
-      alert("you win!")
-    }
-  })
-  return { targetPosition }
+  const targetClass = computed(() => isTargetHit.value ? 'target-hit' : '')
+  return { targetPosition, targetClass }
 }
 
 export default {
@@ -83,7 +79,7 @@ export default {
     return {
       birdPosition,
       ...useCatapult(moveBird),
-      ...useTarget(bird, resetBird)
+      ...useTarget(bird)
     }
   }
 }
