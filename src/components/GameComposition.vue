@@ -64,7 +64,7 @@ function useCatapult(moveBird) {
 
 function useTarget(bird) {
   const target = { x: 970, y: 263 }
-  const isTargetHit = computed(() => bird.x >= target.x && bird.y >= target.y - 45 && bird.y <= target.y + 132)
+  const isTargetHit = computed(() => bird.x >= target.x && bird.x <= target.x + 150 && bird.y >= target.y - 45 && bird.y <= target.y + 132)
   const targetPosition = computed(() => ({
     left: target.x + 'px',
     bottom: target.y + 'px'

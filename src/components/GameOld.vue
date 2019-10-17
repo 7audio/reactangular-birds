@@ -58,7 +58,7 @@ export default {
       }
     },
     isTargetHit() {
-      return (this.bird.x >= target.x + 25 && this.bird.y >= target.y - 45 && this.bird.y <= target.y + 132)
+      return (this.bird.x >= target.x && this.bird.x <= target.x + 150 && this.bird.y >= target.y - 45 && this.bird.y <= target.y + 132)
     },
     targetClass() {
       return this.isTargetHit ? 'target-hit' : ''
