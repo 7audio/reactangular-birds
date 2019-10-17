@@ -37,8 +37,8 @@ export default {
       return result
     },
     moveBird(trajectory) {
-      trajectory.map((position, t) => setTimeout(() => this.bird = position, t * 65))
-      setTimeout(this.resetBird, 2000)
+      trajectory.map((position, t) => setTimeout(() => this.bird = position, t * 90))
+      setTimeout(this.resetBird, 2800)
     },
     resetBird() {
       this.bird = initialBird()
