@@ -31,15 +31,15 @@ body {
   opacity: .4;
 }
 @keyframes shake {
-  0% { transform: translate(2px, 2px) rotate(0deg); }
-  10% { transform: translate(-2px, -4px) rotate(-3deg); }
-  20% { transform: translate(-6px, 0px) rotate(3deg); }
-  30% { transform: translate(6px, 4px) rotate(0deg); }
-  40% { transform: translate(2px, -2px) rotate(3deg); }
-  50% { transform: translate(-2px, 4px) rotate(-3deg); }
-  60% { transform: translate(-6px, 2px) rotate(0deg); }
-  70% { transform: translate(6px, 2px) rotate(-3deg); }
-  80% { transform: translate(-2px, -2px) rotate(3deg); }
-  90% { transform: translate(2px, 4px) rotate(0deg); }
-  100% { transform: translate(2px, -4px) rotate(-3deg); }
+  0% { transform: translate(2px, 0px) rotate(0deg); }
+  10% { transform: translate(-2px, 100px) rotate(-3deg); }
+  20% { transform: translate(-6px, 200px) rotate(3deg); }
+  30% { transform: translate(6px, 300px) rotate(0deg); }
+  40% { transform: translate(2px, 400px) rotate(3deg); }
+  50% { transform: translate(-2px, 500px) rotate(-3deg); }
+  60% { transform: translate(-6px, 600px) rotate(0deg); }
+  70% { transform: translate(6px, 700px) rotate(-3deg); }
+  80% { transform: translate(-2px, 800px) rotate(3deg); }
+  90% { transform: translate(2px, 900px) rotate(0deg); }
+  100% { transform: translate(2px, 1000px) rotate(-3deg); }
 }
